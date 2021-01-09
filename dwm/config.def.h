@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 8;        /* gaps between windows */
@@ -38,8 +40,8 @@ static const Rule rules[] = {
 	{ "krita",			NULL,       NULL,       1 << 6,       0,           -1 },
 	{ "firefox",		NULL,       NULL,       1,            0,           -1 },
 	{ "Slack",			NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "arandr",			NULL,       NULL,       1 << 4,       0,           -1 },
-	{ "pavucontrol",	NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "Arandr",			NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "Uavucontrol",	NULL,       NULL,       1 << 4,       0,           -1 },
 };
 
 /* layout(s) */
@@ -71,6 +73,11 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *clipmenucmd[]  = { "clipmenu", NULL };
+
+/* volume commands */
+static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
+static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
@@ -115,6 +122,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
 	{ MODKEY,						XK_c,      spawn,          {.v = clipmenucmd} },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+	{ 0,                            XF86XK_AudioMute, spawn, {.v = mutevol } },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 };
 
 /* button definitions */
