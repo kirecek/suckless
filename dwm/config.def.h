@@ -41,7 +41,8 @@ static const Rule rules[] = {
     { "firefox",        NULL,       NULL,       1,            0,           -1 },
     { "Slack",          NULL,       NULL,       1 << 3,       0,           -1 },
     { "Arandr",         NULL,       NULL,       1 << 4,       0,           -1 },
-    { "Uavucontrol",    NULL,       NULL,       1 << 4,       0,           -1 },
+    { "Pavucontrol",    NULL,       NULL,       1 << 4,       0,           -1 },
+    { "zoom",           NULL,       NULL,       1 << 5,       0,           -1 },
 };
 
 /* layout(s) */
