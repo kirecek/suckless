@@ -14,20 +14,22 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 0;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 15;        /* vertical padding for statusbar */
-static const char *fonts[]          = { "hack:size=12" };
+static const char *fonts[]          = { "hack:size=10" };
 static const char dmenufont[]       = "hack:size=12";
-static const char col_bg_sel[]      = "#1d1d1d";
+static const char col_bg_sel[]      = "#9A9A9A";
 static const char col_border_sel[]  = "#414141";
+static const char col_fg_sel[]      = "#000000";
 static const char col_bg[]          = "#282828";
-static const char col_fg[]          = "#ffffff";
+static const char col_fg[]          = "#9A9A9A";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { col_fg, col_bg, col_bg },
-    [SchemeSel]  = { col_fg, col_bg_sel,  col_border_sel  },
+    [SchemeSel]  = { col_fg_sel, col_bg_sel,  col_border_sel  },
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+// static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "www", "term", "dev", "chat", "cfg", "media", "gfx", "games", "crap" };
 
 static const Rule rules[] = {
     /* xprop(1):
