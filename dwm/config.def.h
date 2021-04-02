@@ -14,17 +14,25 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 0;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 15;        /* vertical padding for statusbar */
-static const char *fonts[]          = { "hack:size=10" };
+static const char *fonts[]          = { "Ubuntu Mono:size=12" };
 static const char dmenufont[]       = "hack:size=12";
 static const char col_bg_sel[]      = "#9A9A9A";
 static const char col_border_sel[]  = "#414141";
 static const char col_fg_sel[]      = "#000000";
 static const char col_bg[]          = "#282828";
-static const char col_fg[]          = "#9A9A9A";
+static const char col_tags_bg[]     = "#212121";
+static const char col_fg[]          = "#ffffff";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
-    [SchemeNorm] = { col_fg, col_bg, col_bg },
+    [SchemeNorm] = { col_fg, "#171819", col_bg },
     [SchemeSel]  = { col_fg_sel, col_bg_sel,  col_border_sel  },
+    [SchemeStatus] = { "#e0e0e0", "#171819", col_bg },
+    [SchemeTagsSel] = { "#70ea9b", col_tags_bg, col_bg },
+    [SchemeTagsNorm] = { col_fg, col_tags_bg, col_bg },
+    [SchemeTagsSelInd] = { "#666363", col_tags_bg, col_bg },
+    [SchemeInfoSel] = { col_fg, col_bg, col_bg },
+    [SchemeInfoNorm] = { col_fg, col_bg, col_bg },
+    [SchemeLayoutInfo] = { "#666363", col_tags_bg, col_bg },
 };
 
 /* tagging */
@@ -54,9 +62,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    { "[]=",      tile },    /* first entry is default */
-    { "><>",      NULL },    /* no layout function means floating behavior */
-    { "[M]",      monocle },
+    { "[tiled]",      tile },    /* first entry is default */
+    { "[floating]",      NULL },    /* no layout function means floating behavior */
+    { "[monocle]",      monocle },
 };
 
 /* key definitions */
