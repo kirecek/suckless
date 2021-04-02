@@ -24,14 +24,14 @@ static const char col_fg[]          = "#ffffff";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { col_fg, "#171819", col_bg },
-    [SchemeSel]  = { col_fg_sel, col_bg_sel,  "#919191" },
+    [SchemeSel]  = { col_fg_sel, col_bg_sel,  "#458588" },
     [SchemeStatus] = { "#FFFFFF", "#171819", col_bg },
     [SchemeTagsSel] = { "#FB4934", col_bg, col_bg },
-    [SchemeTagsNorm] = { "#FFFFFF", col_bg, col_bg },
+    [SchemeTagsNorm] = { "#FFFFFF", "#212121", col_bg },
     [SchemeTagsInd] = { "#919191", col_bg, col_bg },
-    [SchemeInfoSel] = { "#ffffff", col_bg, col_bg },
-    [SchemeInfoNorm] = { col_fg, col_bg, col_bg },
-    [SchemeLayoutInfo] = { "#8EC07C", "#171717", col_bg },
+    [SchemeInfoSel] = { "#000000", "#458588", col_bg },
+    [SchemeInfoNorm] = { col_fg, "#171819", col_bg },
+    [SchemeLayoutInfo] = { "#494949", "#171717", col_bg },
 };
 static const char sel_chars[2] = {']', '['};
 
@@ -121,6 +121,15 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
     { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
     { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+    { MODKEY|ControlMask,           XK_1,      toggletag,      {.ui = 0 } },
+    { MODKEY|ControlMask,           XK_2,      toggletag,      {.ui = 1 } },
+    { MODKEY|ControlMask,           XK_3,      toggletag,      {.ui = 2 } },
+    { MODKEY|ControlMask,           XK_4,      toggletag,      {.ui = 3 } },
+    { MODKEY|ControlMask,           XK_5,      toggletag,      {.ui = 4 } },
+    { MODKEY|ControlMask,           XK_6,      toggletag,      {.ui = 5 } },
+    { MODKEY|ControlMask,           XK_7,      toggletag,      {.ui = 6 } },
+    { MODKEY|ControlMask,           XK_8,      toggletag,      {.ui = 7 } },
+    { MODKEY|ControlMask,           XK_9,      toggletag,      {.ui = 8 } },
     { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
     { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
