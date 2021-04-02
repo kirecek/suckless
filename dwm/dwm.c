@@ -57,10 +57,11 @@
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw + gappx)
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
+#define TEXTW_NOPAD(X)                (drw_fontset_getwidth(drw, (X)))
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeStatus, SchemeTagsSel, SchemeTagsSelInd, SchemeTagsNorm, SchemeInfoSel, SchemeInfoNorm, SchemeLayoutInfo }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeStatus, SchemeTagsSel, SchemeTagsInd, SchemeTagsNorm, SchemeInfoSel, SchemeInfoNorm, SchemeLayoutInfo }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -468,7 +469,10 @@ buttonpress(XEvent *e)
 	if (ev->window == selmon->barwin) {
 		i = x = 0;
 		do
-			x += TEXTW(tags[i]);
+			if (m->tagset[m->seltags] & 1 << i)
+				x += TEXTW(tags[i]) + TEXTW_NOPAD(sel_chars);
+			else
+				x += TEXTW(tags[i]);
 		while (ev->x >= x && ++i < LENGTH(tags));
 		if (i < LENGTH(tags)) {
 			click = ClkTagBar;
@@ -748,11 +752,13 @@ drawbar(Monitor *m)
 {
 	int x, w, tw = 0;
 	int boxs = drw->fonts->h / 9;
-	int boxw = drw->fonts->h / 6 + 2;
+	int boxw = drw->fonts->h / 6 + 1;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 	unsigned int a= 0, s= 0;
 	char posbuf[10];
+	int sc = TEXTW_NOPAD(sel_chars);
+	char at[30];
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
@@ -771,13 +777,20 @@ drawbar(Monitor *m)
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : SchemeTagsNorm]);
-		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+
+		/* if (m == selmon && selmon->sel && selmon->sel->tags & 1 << i) { */
+		if (m->tagset[m->seltags] & 1 << i) {
+			sprintf(at, "[%s]", tags[i]);
+			w += sc;
+			drw_text(drw, x, 0, w, bh, lrpad / 2, at, urg & 1 << i);
+		} else {
+			drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+		}
 
 		if (occ & 1 << i) {
-			drw_setscheme(drw, scheme[SchemeTagsSelInd]);
-			drw_rect(drw, x + boxw, 0, w - ( 2 * boxw + 1), boxw,
-			    m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-			    urg & 1 << i);
+			drw_setscheme(drw, scheme[SchemeTagsInd]);
+			drw_rect(drw, x + boxw, 0, w - ( 2 * boxw + 1), boxw, 1, urg & 1 << i);
+
 		}
 		x += w;
 	}

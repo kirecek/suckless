@@ -3,8 +3,8 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int gappx     = 8;        /* gaps between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 1;   /* systray spacing */
@@ -14,30 +14,30 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 0;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 15;        /* vertical padding for statusbar */
-static const char *fonts[]          = { "Ubuntu Mono:size=12" };
+static const char *fonts[]          = { "Ubuntu Mono:size=14" };
 static const char dmenufont[]       = "hack:size=12";
 static const char col_bg_sel[]      = "#9A9A9A";
 static const char col_border_sel[]  = "#414141";
 static const char col_fg_sel[]      = "#70ea9b";
 static const char col_bg[]          = "#282828";
-static const char col_tags_bg[]     = "#212121";
 static const char col_fg[]          = "#ffffff";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { col_fg, "#171819", col_bg },
-    [SchemeSel]  = { col_fg_sel, col_bg_sel,  col_border_sel  },
-    [SchemeStatus] = { "#e0e0e0", "#171819", col_bg },
-    [SchemeTagsSel] = { "#70ea9b", col_tags_bg, col_bg },
-    [SchemeTagsNorm] = { col_fg, col_tags_bg, col_bg },
-    [SchemeTagsSelInd] = { "#666363", col_tags_bg, col_bg },
-    [SchemeInfoSel] = { "#FFFFFF", col_bg, col_bg },
-    [SchemeInfoNorm] = { col_fg, col_tags_bg, col_bg },
-    [SchemeLayoutInfo] = { "#0366D6", col_tags_bg, col_bg },
+    [SchemeSel]  = { col_fg_sel, col_bg_sel,  "#8EC07C" },
+    [SchemeStatus] = { "#FFFFFF", "#171819", col_bg },
+    [SchemeTagsSel] = { "#FB4934", col_bg, col_bg },
+    [SchemeTagsNorm] = { "#FFFFFF", col_bg, col_bg },
+    [SchemeTagsInd] = { "#919191", col_bg, col_bg },
+    [SchemeInfoSel] = { "#ffffff", col_bg, col_bg },
+    [SchemeInfoNorm] = { col_fg, col_bg, col_bg },
+    [SchemeLayoutInfo] = { "#8EC07C", "#171717", col_bg },
 };
+static const char sel_chars[2] = {']', '['};
 
 /* tagging */
 // static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
-static const char *tags[] = { "www", "term", "dev", "chat", "cfg", "media", "gfx", "games", "crap" };
+static const char *tags[] = { "www", "term", "dev", "chat", "sys", "media", "gfx", "games", "crap" };
 
 static const Rule rules[] = {
     /* xprop(1):
