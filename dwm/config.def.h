@@ -14,8 +14,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 0;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 15;        /* vertical padding for statusbar */
-static const char *fonts[]          = { "Ubuntu Mono:size=14" };
-static const char dmenufont[]       = "hack:size=12";
+static const char *fonts[]          = { "Ubuntu Mono:size=12" };
+static const char dmenufont[]       = "Ubuntu Mono:size=12";
 static const char col_bg_sel[]      = "#9A9A9A";
 static const char col_border_sel[]  = "#414141";
 static const char col_fg_sel[]      = "#70ea9b";
@@ -24,7 +24,7 @@ static const char col_fg[]          = "#ffffff";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { col_fg, "#171819", col_bg },
-    [SchemeSel]  = { col_fg_sel, col_bg_sel,  "#8EC07C" },
+    [SchemeSel]  = { col_fg_sel, col_bg_sel,  "#919191" },
     [SchemeStatus] = { "#FFFFFF", "#171819", col_bg },
     [SchemeTagsSel] = { "#FB4934", col_bg, col_bg },
     [SchemeTagsNorm] = { "#FFFFFF", col_bg, col_bg },
@@ -50,6 +50,8 @@ static const Rule rules[] = {
     { "krita",          NULL,       NULL,       1 << 6,       0,           -1 },
     { "firefox",        NULL,       NULL,       1,            0,           -1 },
     { "Slack",          NULL,       NULL,       1 << 3,       0,           -1 },
+    { "Emacs",          NULL,       NULL,       1 << 2,       0,           -1 },
+    { "code",           NULL,       NULL,       1 << 2,       0,           -1 },
     { "Arandr",         NULL,       NULL,       1 << 4,       0,           -1 },
     { "Pavucontrol",    NULL,       NULL,       1 << 4,       0,           -1 },
     { "zoom",           NULL,       NULL,       1 << 5,       0,           -1 },
