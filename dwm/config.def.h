@@ -18,7 +18,7 @@ static const char *fonts[]          = { "Ubuntu Mono:size=12" };
 static const char dmenufont[]       = "hack:size=12";
 static const char col_bg_sel[]      = "#9A9A9A";
 static const char col_border_sel[]  = "#414141";
-static const char col_fg_sel[]      = "#000000";
+static const char col_fg_sel[]      = "#70ea9b";
 static const char col_bg[]          = "#282828";
 static const char col_tags_bg[]     = "#212121";
 static const char col_fg[]          = "#ffffff";
@@ -30,9 +30,9 @@ static const char *colors[][3]      = {
     [SchemeTagsSel] = { "#70ea9b", col_tags_bg, col_bg },
     [SchemeTagsNorm] = { col_fg, col_tags_bg, col_bg },
     [SchemeTagsSelInd] = { "#666363", col_tags_bg, col_bg },
-    [SchemeInfoSel] = { col_fg, col_bg, col_bg },
-    [SchemeInfoNorm] = { col_fg, col_bg, col_bg },
-    [SchemeLayoutInfo] = { "#666363", col_tags_bg, col_bg },
+    [SchemeInfoSel] = { "#FFFFFF", col_bg, col_bg },
+    [SchemeInfoNorm] = { col_fg, col_tags_bg, col_bg },
+    [SchemeLayoutInfo] = { "#0366D6", col_tags_bg, col_bg },
 };
 
 /* tagging */
@@ -62,9 +62,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    { "[tiled]",      tile },    /* first entry is default */
-    { "[floating]",      NULL },    /* no layout function means floating behavior */
-    { "[monocle]",      monocle },
+    { "[T]",      tile },    /* first entry is default */
+    { "[F]",      NULL },    /* no layout function means floating behavior */
+    { "[M]",      monocle },
 };
 
 /* key definitions */
