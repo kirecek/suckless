@@ -44,17 +44,18 @@ static const Rule rules[] = {
      *  WM_CLASS(STRING) = instance, class
      *  WM_NAME(STRING) = title
      */
-    /* class            instance    title       tags mask     isfloating   monitor */
-    { "Steam",          NULL,       NULL,       1 << 7,       1,           -1 },
-    { "Gimp",           NULL,       NULL,       1 << 6,       1,           -1 },
-    { "krita",          NULL,       NULL,       1 << 6,       0,           -1 },
-    { "firefox",        NULL,       NULL,       1,            0,           -1 },
-    { "Slack",          NULL,       NULL,       1 << 3,       0,           -1 },
-    { "Emacs",          NULL,       NULL,       1 << 2,       0,           -1 },
-    { "code",           NULL,       NULL,       1 << 2,       0,           -1 },
-    { "Arandr",         NULL,       NULL,       1 << 4,       0,           -1 },
-    { "Pavucontrol",    NULL,       NULL,       1 << 4,       0,           -1 },
-    { "zoom",           NULL,       NULL,       1 << 5,       0,           -1 },
+    /* class            instance    title           tags mask     isfloating    monitor scratch key*/
+    { "Steam",          NULL,       NULL,           1 << 7,       1,           -1,      0 },
+    { "Gimp",           NULL,       NULL,           1 << 6,       1,           -1,      0 },
+    { "krita",          NULL,       NULL,           1 << 6,       0,           -1,      0 },
+    { "firefox",        NULL,       NULL,           1,            0,           -1,      0 },
+    { "Slack",          NULL,       NULL,           1 << 3,       0,           -1,      0 },
+    { "Emacs",          NULL,       NULL,           1 << 2,       0,           -1,      0 },
+    { "code",           NULL,       NULL,           1 << 2,       0,           -1,      0 },
+    { "Arandr",         NULL,       NULL,           1 << 4,       0,           -1,      0 },
+    { "Pavucontrol",    NULL,       NULL,           1 << 4,       0,           -1,      0 },
+    { "zoom",           NULL,       NULL,           1 << 5,       0,           -1,      0 },
+	{ NULL,             NULL,       "scratchpad",   0,            1,           -1,       's' },
 };
 
 /* layout(s) */
@@ -96,6 +97,8 @@ static const char *brightdown[]  = { "/usr/bin/xbacklight", "-dec", "10", NULL};
 
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
+
+static const char *scratchpadcmd[] = {"s", "alacritty", "-t", "scratchpad", NULL}; 
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -152,6 +155,8 @@ static Key keys[] = {
     { 0,                            XF86XK_AudioRaiseVolume,   spawn, {.v = upvol   } },
     { 0,                            XF86XK_MonBrightnessUp,    spawn, {.v = brightup } },
     { 0,                            XF86XK_MonBrightnessDown,  spawn, {.v = brightdown } },
+
+	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 };
 
 /* button definitions */
