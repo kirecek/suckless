@@ -762,8 +762,6 @@ drawbar(Monitor *m)
 	int boxw = drw->fonts->h / 6 + 1;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
-	unsigned int a= 0, s= 0;
-	char posbuf[10];
 	int sc = TEXTW_NOPAD(sel_chars);
 	char at[30];
 
@@ -1186,7 +1184,6 @@ maprequest(XEvent *e)
 void
 monocle(Monitor *m)
 {
-	unsigned int n = 0;
 	Client *c;
 
 	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
