@@ -48,19 +48,24 @@ static const Rule rules[] = {
     /* xprop(1):
      *  WM_CLASS(STRING) = instance, class
      *  WM_NAME(STRING) = title
-     */
-    /* class            instance    title           tags mask     isfloating    monitor scratch key*/
-    { "Steam",          NULL,       NULL,           1 << 7,       1,           -1,      0 },
-    { "Gimp",           NULL,       NULL,           1 << 6,       1,           -1,      0 },
-    { "krita",          NULL,       NULL,           1 << 6,       0,           -1,      0 },
-    { "firefox",        NULL,       NULL,           1,            0,           -1,      0 },
-    { "Slack",          NULL,       NULL,           1 << 3,       0,           -1,      0 },
-    { "Emacs",          NULL,       NULL,           1 << 2,       0,           -1,      0 },
-    { "code",           NULL,       NULL,           1 << 2,       0,           -1,      0 },
-    { "Arandr",         NULL,       NULL,           1 << 4,       0,           -1,      0 },
-    { "Pavucontrol",    NULL,       NULL,           1 << 4,       0,           -1,      0 },
-    { "zoom",           NULL,       NULL,           1 << 5,       0,           -1,      0 },
-	{ NULL,             NULL,       "scratchpad",   0,            1,           -1,       's' },
+    */
+
+    /* floating */
+    /* class            instance    title           tags mask     isfloating   monitor    scratch   floating rules */
+    { NULL,             NULL,       "scratchpad",   0,            1,           -1,        's',      250,130,1300,800, 5 },
+    { "Steam",          NULL,       NULL,           1 << 7,       1,           -1,        0,        90,70,1600,900, 2 },
+    { "Gimp",           NULL,       NULL,           1 << 6,       1,           -1,        0,        90,70,1600,900, 2 },
+    { "krita",          NULL,       NULL,           1 << 6,       0,           -1,        0,        90,70,1600,900, 2 },
+    
+    /* non-floating */
+    /* class            instance    title           tags mask     isfloating   monitor    scratch   floating rules */
+    { "firefox",        NULL,       NULL,           1,            0,           -1,        0,        0,0,0,0,0 },
+    { "Slack",          NULL,       NULL,           1 << 3,       0,           -1,        0,        0,0,0,0,0 },
+    { "Emacs",          NULL,       NULL,           1 << 2,       0,           -1,        0,        0,0,0,0,0 },
+    { "code",           NULL,       NULL,           1 << 2,       0,           -1,        0,        0,0,0,0,0 },
+    { "Arandr",         NULL,       NULL,           1 << 4,       0,           -1,        0,        0,0,0,0,0 },
+    { "Pavucontrol",    NULL,       NULL,           1 << 4,       0,           -1,        0,        0,0,0,0,0 },
+    { "zoom",           NULL,       NULL,           1 << 5,       0,           -1,        0,        0,0,0,0,0 },
 };
 
 /* layout(s) */
