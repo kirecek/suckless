@@ -61,7 +61,7 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeStatus, SchemeTagsSel, SchemeTagsInd, SchemeTagsNorm, SchemeInfoSel, SchemeInfoNorm, SchemeLayoutInfo }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeStatus, SchemeTagsSel, SchemeTagsInd, SchemeTagsNorm, SchemeInfoSel, SchemeInfoNorm, SchemeLayoutInfo, SchemeUrgent }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -784,7 +784,7 @@ drawbar(Monitor *m)
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeStatus]);
 		tw = TEXTW(stext);
-		drw_text(drw, m->ww - tw, 0, tw, bh, lrpad / 2, stext, 0);
+		drw_text(drw, m->ww - tw, 0, tw, bh, lrpad / 2, stext);
 	}
 
 	for (c = m->clients; c; c = c->next) {
@@ -798,40 +798,41 @@ drawbar(Monitor *m)
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : SchemeTagsNorm]);
 
+		if (urg & 1 << i) {
+			drw_setscheme(drw, scheme[SchemeUrgent]);
+		}
+
 		/* if (m == selmon && selmon->sel && selmon->sel->tags & 1 << i) { */
 		if (m->tagset[m->seltags] & 1 << i) {
 			sprintf(at, "[%s]", tags[i]);
 			w += sc;
-			drw_text(drw, x, 0, w, bh, lrpad / 2, at, urg & 1 << i);
+			drw_text(drw, x, 0, w, bh, lrpad / 2, at);
 		} else {
-			drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+			drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i]);
 		}
 
 		if (occ & 1 << i) {
 			drw_setscheme(drw, scheme[SchemeTagsInd]);
-			drw_rect(drw, x + boxw, 0, w - ( 2 * boxw + 1), boxw, 1, urg & 1 << i);
+			drw_rect(drw, x + boxw, 0, w - ( 2 * boxw + 1), boxw, 1);
 
 		}
 		x += w;
 	}
 	w = blw = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeLayoutInfo]);
-	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol);
 
 	if ((w = m->ww - tw - x) > bh) {
 		if (m->sel) {
 			int mid = MAX((m->ww - ((int)TEXTW(m->sel->name) - lrpad)) / 2 - x, lrpad / 2);
 			drw_setscheme(drw, scheme[m == selmon ? SchemeInfoSel : SchemeInfoNorm]);
-			drw_text(drw, x, 7, w, bh - 14, mid, m->sel->name, 0);
+			drw_text(drw, x, 7, w, bh - 14, mid, m->sel->name);
 			if (m->sel->isfloating)
-				drw_rect(drw, x + boxs + mid - lrpad / 2, boxs, boxw, boxw, m->sel->isfixed, 0);
-				// drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
+				drw_rect(drw, x + boxs + mid - lrpad / 2, boxs, boxw, boxw, m->sel->isfixed);
 		} else {
 			drw_setscheme(drw, scheme[SchemeInfoNorm]);
-			drw_rect(drw, x, 0, w, bh, 1, 1);
+			drw_rect(drw, x, 0, w, bh, 1);
 		}
-        /* drw_setscheme(drw, scheme[SchemeInfoNorm]); */
-        /* drw_rect(drw, x, 0, w, bh, 1, 1); */
 	
 	}
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
