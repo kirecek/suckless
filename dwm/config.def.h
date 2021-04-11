@@ -53,6 +53,7 @@ static const Rule rules[] = {
     /* floating */
     /* class            instance    title           tags mask     isfloating   monitor    scratch   floating rules */
     { NULL,             NULL,       "scratchpad",   0,            1,           -1,        's',      250,130,1300,800, 5 },
+    { "l2.exe",         NULL,       NULL,           1 << 7,       1,           -1,        0,        250,130,1300,700, 2 }, 
     { "Steam",          NULL,       NULL,           1 << 7,       1,           -1,        0,        90,70,1600,900, 2 },
     { "Gimp",           NULL,       NULL,           1 << 6,       1,           -1,        0,        90,70,1600,900, 2 },
     { "krita",          NULL,       NULL,           1 << 6,       0,           -1,        0,        90,70,1600,900, 2 },
