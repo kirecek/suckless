@@ -798,9 +798,8 @@ drawbar(Monitor *m)
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : SchemeTagsNorm]);
 
-		if (urg & 1 << i) {
+		if (!(m->tagset[m->seltags] & 1 << i) && urg & 1 << i)
 			drw_setscheme(drw, scheme[SchemeUrgent]);
-		}
 
 		/* if (m == selmon && selmon->sel && selmon->sel->tags & 1 << i) { */
 		if (m->tagset[m->seltags] & 1 << i) {
