@@ -43,7 +43,7 @@ static const char *colors[][3] = {
 static const char sel_chars[2] = {']', '['};
 
 /* tagging */
-static const char *tags[] = { "www", "term", "dev", "chat", "sys", "media", "gfx", "games", "crap" };
+static const char *tags[] = { "www", "term", "dev", "dbg", "chat", "sys", "media", "gfx", "games", "crap" };
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -54,20 +54,21 @@ static const Rule rules[] = {
     /* floating */
     /* class            instance    title           tags mask     isfloating   monitor    scratch   floating rules */
     { NULL,             NULL,       "scratchpad",   0,            1,           -1,        's',      250,130,1300,800, 5 },
-    { "l2.exe",         NULL,       NULL,           1 << 7,       1,           -1,        0,        250,130,1300,700, 2 }, 
-    { "Steam",          NULL,       NULL,           1 << 7,       1,           -1,        0,        90,70,1600,900, 2 },
-    { "Gimp",           NULL,       NULL,           1 << 6,       1,           -1,        0,        90,70,1600,900, 2 },
-    { "krita",          NULL,       NULL,           1 << 6,       1,           -1,        0,        90,70,1600,900, 2 },
+    { "l2.exe",         NULL,       NULL,           1 << 8,       1,           -1,        0,        250,130,1300,700, 2 }, 
+    { "Steam",          NULL,       NULL,           1 << 8,       1,           -1,        0,        90,70,1600,900, 2 },
+    { "Gimp",           NULL,       NULL,           1 << 7,       1,           -1,        0,        90,70,1600,900, 2 },
+    { "krita",          NULL,       NULL,           1 << 7,       1,           -1,        0,        90,70,1600,900, 2 },
 
     /* non-floating */
     /* class            instance    title           tags mask     isfloating   monitor    scratch   floating rules */
     { "firefox",        NULL,       NULL,           1,            0,           -1,        0,        0,0,0,0,0 },
-    { "Slack",          NULL,       NULL,           1 << 3,       0,           -1,        0,        0,0,0,0,0 },
+    { "Slack",          NULL,       NULL,           1 << 4,       0,           -1,        0,        0,0,0,0,0 },
     { "Emacs",          NULL,       NULL,           1 << 2,       0,           -1,        0,        0,0,0,0,0 },
     { "code",           NULL,       NULL,           1 << 2,       0,           -1,        0,        0,0,0,0,0 },
-    { "Arandr",         NULL,       NULL,           1 << 4,       0,           -1,        0,        0,0,0,0,0 },
-    { "Pavucontrol",    NULL,       NULL,           1 << 4,       0,           -1,        0,        0,0,0,0,0 },
-    { "zoom",           NULL,       NULL,           1 << 5,       0,           -1,        0,        0,0,0,0,0 },
+    { "Arandr",         NULL,       NULL,           1 << 5,       0,           -1,        0,        0,0,0,0,0 },
+    { "Pavucontrol",    NULL,       NULL,           1 << 5,       0,           -1,        0,        0,0,0,0,0 },
+    { "zoom",           NULL,       NULL,           1 << 6,       0,           -1,        0,        0,0,0,0,0 },
+    { "Wireshark",      NULL,       NULL,           1 << 3,       0,           -1,        0,        0,0,0,0,0 },
 };
 
 /* layout(s) */
