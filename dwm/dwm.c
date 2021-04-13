@@ -826,8 +826,10 @@ drawbar(Monitor *m)
 			int mid = MAX((m->ww - ((int)TEXTW(m->sel->name) - lrpad)) / 2 - x, lrpad / 2);
 			drw_setscheme(drw, scheme[m == selmon ? SchemeInfoSel : SchemeInfoNorm]);
 			drw_text(drw, x, 7, w, bh - 14, mid - sc, m->sel->name);
+            /* wtf is this? :D
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs + mid - lrpad / 2, boxs, boxw, boxw, m->sel->isfixed);
+            */
 		} else {
 			drw_setscheme(drw, scheme[SchemeInfoNorm]);
 			drw_rect(drw, x, 0, w, bh, 1);
