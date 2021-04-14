@@ -1,7 +1,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx = 3;
+static const unsigned int borderpx = 2;
 static const unsigned int gappx    = 10;
 static const unsigned int snap     = 32;
 
@@ -20,19 +20,19 @@ static const char dmenufont[] = "Ubuntu Mono:size=12";
 /* color variables */
 static const char col_bg[]        = "#171819";
 static const char col_fg[]        = "#ffffff";
-static const char col_fg_dark[]   = "#000000";
-static const char col_highlight[] = "#458588";
+static const char col_fg_dark[]   = "#ffffff";
+static const char col_highlight[] = "#373737";
 
 /* color schemes */
 static const char *colors[][3] = {
     /*                      fg              bg              border   */
     [SchemeNorm]        = { col_fg,         col_bg,         col_bg },
-    [SchemeSel]         = { col_highlight,  col_bg,         col_highlight },
+    [SchemeSel]         = { col_highlight,  col_bg,         "#969696" },
     [SchemeStatus]      = { col_fg,         col_bg,         col_bg },
     [SchemeTagsSel]     = { col_fg_dark,    col_highlight,  col_bg },
     [SchemeTagsNorm]    = { col_fg,         "#212121",      col_bg },
     [SchemeTagsInd]     = { col_highlight,  col_bg,         col_bg },
-    [SchemeInfoSel]     = { col_fg_dark,    col_highlight,  col_bg },
+    [SchemeInfoSel]     = { "#969696",      col_highlight,  col_bg },
     [SchemeInfoNorm]    = { col_bg,         col_bg,         col_bg },
     [SchemeLayoutInfo]  = { col_highlight,  col_bg,         col_bg },
     [SchemeUrgent]      = { col_highlight,  col_bg,         col_bg },
@@ -53,7 +53,7 @@ static const Rule rules[] = {
 
     /* floating */
     /* class            instance    title           tags mask     isfloating   monitor    scratch   floating rules */
-    { NULL,             NULL,       "scratchpad",   0,            1,           -1,        's',      250,130,1300,800, 5 },
+    { NULL,             NULL,       "scratchpad",   0,            1,           -1,        's',      250,130,1300,800, 3 },
     { "l2.exe",         NULL,       NULL,           1 << 8,       1,           -1,        0,        250,130,1300,700, 2 }, 
     { "Steam",          NULL,       NULL,           1 << 8,       1,           -1,        0,        90,70,1600,900, 2 },
     { "Gimp",           NULL,       NULL,           1 << 7,       1,           -1,        0,        90,70,1600,900, 2 },
