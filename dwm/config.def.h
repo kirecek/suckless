@@ -1,13 +1,14 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx = 2;
+static const unsigned int borderpx = 3;
 static const unsigned int gappx    = 10;
 static const unsigned int snap     = 32;
 
 /* bar settings */
-static const int showbar = 1;
-static const int topbar  = 1;
+static const int showbar  = 1;
+static const int topbar   = 1;
+static const int showtitle = 0;
 
 /* statusbar padding */
 static const int horizpadbar = 0;
@@ -18,21 +19,21 @@ static const char *fonts[]    = { "Ubuntu Mono:size=12" };
 static const char dmenufont[] = "Ubuntu Mono:size=12";
 
 /* color variables */
-static const char col_bg[]        = "#171819";
+static const char col_bg[]        = "#222222";
 static const char col_fg[]        = "#ffffff";
-static const char col_fg_dark[]   = "#ffffff";
-static const char col_highlight[] = "#373737";
+static const char col_fg_dark[]   = "#000000";
+static const char col_highlight[] = "#66aabb";
 
 /* color schemes */
 static const char *colors[][3] = {
     /*                      fg              bg              border   */
     [SchemeNorm]        = { col_fg,         col_bg,         col_bg },
-    [SchemeSel]         = { col_highlight,  col_bg,         "#969696" },
+    [SchemeSel]         = { col_highlight,  col_bg,         col_highlight },
     [SchemeStatus]      = { col_fg,         col_bg,         col_bg },
-    [SchemeTagsSel]     = { col_fg_dark,    col_highlight,  col_bg },
-    [SchemeTagsNorm]    = { col_fg,         "#212121",      col_bg },
+    [SchemeTagsSel]     = { col_highlight,  col_bg,         col_bg },
+    [SchemeTagsNorm]    = { col_fg,         col_bg,         col_bg },
     [SchemeTagsInd]     = { col_highlight,  col_bg,         col_bg },
-    [SchemeInfoSel]     = { "#969696",      col_highlight,  col_bg },
+    [SchemeInfoSel]     = { col_fg_dark,    col_highlight,  col_bg },
     [SchemeInfoNorm]    = { col_bg,         col_bg,         col_bg },
     [SchemeLayoutInfo]  = { col_highlight,  col_bg,         col_bg },
     [SchemeUrgent]      = { col_highlight,  col_bg,         col_bg },
