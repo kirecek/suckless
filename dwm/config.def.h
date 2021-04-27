@@ -1,8 +1,8 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx = 3;
-static const unsigned int gappx    = 10;
+static const unsigned int borderpx = 2;
+static const unsigned int gappx    = 25;
 static const unsigned int snap     = 32;
 
 /* bar settings */
@@ -22,7 +22,7 @@ static const char dmenufont[] = "Ubuntu Mono:size=12";
 static const char col_bg[]        = "#222222";
 static const char col_fg[]        = "#ffffff";
 static const char col_fg_dark[]   = "#000000";
-static const char col_highlight[] = "#66aabb";
+static const char col_highlight[] = "#8EC07C";
 
 /* color schemes */
 static const char *colors[][3] = {
@@ -30,7 +30,8 @@ static const char *colors[][3] = {
     [SchemeNorm]        = { col_fg,         col_bg,         col_bg },
     [SchemeSel]         = { col_highlight,  col_bg,         col_highlight },
     [SchemeStatus]      = { col_fg,         col_bg,         col_bg },
-    [SchemeTagsSel]     = { col_highlight,  col_bg,         col_bg },
+    // [SchemeTagsSel]     = { col_fg_dark,    col_highlight,  col_bg },
+    [SchemeTagsSel]     = { col_highlight,  col_bg,  col_bg },
     [SchemeTagsNorm]    = { col_fg,         col_bg,         col_bg },
     [SchemeTagsInd]     = { col_highlight,  col_bg,         col_bg },
     [SchemeInfoSel]     = { col_fg_dark,    col_highlight,  col_bg },
