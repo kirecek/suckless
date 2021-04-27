@@ -2,8 +2,9 @@
 
 /* appearance */
 static const unsigned int borderpx = 2;
-static const unsigned int gappx    = 25;
+static const unsigned int gappx    = 15;
 static const unsigned int snap     = 32;
+static const Gap default_gap      = {.isgap = 1, .realgap = 10, .gappx = 10};
 
 /* bar settings */
 static const int showbar  = 1;
@@ -30,8 +31,7 @@ static const char *colors[][3] = {
     [SchemeNorm]        = { col_fg,         col_bg,         col_bg },
     [SchemeSel]         = { col_highlight,  col_bg,         col_highlight },
     [SchemeStatus]      = { col_fg,         col_bg,         col_bg },
-    // [SchemeTagsSel]     = { col_fg_dark,    col_highlight,  col_bg },
-    [SchemeTagsSel]     = { col_highlight,  col_bg,  col_bg },
+    [SchemeTagsSel]     = { col_highlight,  col_bg,         col_bg },
     [SchemeTagsNorm]    = { col_fg,         col_bg,         col_bg },
     [SchemeTagsInd]     = { col_highlight,  col_bg,         col_bg },
     [SchemeInfoSel]     = { col_fg_dark,    col_highlight,  col_bg },
@@ -152,6 +152,10 @@ static Key keys[] = {
     { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+    { MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
+	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
+    { MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = GAP_RESET } },
+	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = GAP_TOGGLE} },
     TAGKEYS(                        XK_1,                      0)
     TAGKEYS(                        XK_2,                      1)
     TAGKEYS(                        XK_3,                      2)
