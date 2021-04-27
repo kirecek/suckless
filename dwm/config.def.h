@@ -1,15 +1,14 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx = 2;
-static const unsigned int gappx    = 15;
+static const unsigned int borderpx = 1;
+static const unsigned int gappx    = 10;
 static const unsigned int snap     = 32;
-static const Gap default_gap      = {.isgap = 1, .realgap = 10, .gappx = 10};
 
 /* bar settings */
 static const int showbar  = 1;
 static const int topbar   = 1;
-static const int showtitle = 0;
+static const int showtitle = 1;
 
 /* statusbar padding */
 static const int horizpadbar = 0;
@@ -20,23 +19,23 @@ static const char *fonts[]    = { "Ubuntu Mono:size=12" };
 static const char dmenufont[] = "Ubuntu Mono:size=12";
 
 /* color variables */
-static const char col_bg[]        = "#222222";
-static const char col_fg[]        = "#ffffff";
-static const char col_fg_dark[]   = "#000000";
-static const char col_highlight[] = "#8EC07C";
+static const char col_bg[]        = "#000000";
+static const char col_fg[]        = "#969696";
+static const char col_fg_dark[]   = "#FFFFFF";
+static const char col_highlight[] = "#1E1E1E";
 
 /* color schemes */
 static const char *colors[][3] = {
     /*                      fg              bg              border   */
-    [SchemeNorm]        = { col_fg,         col_bg,         col_bg },
-    [SchemeSel]         = { col_highlight,  col_bg,         col_highlight },
+    [SchemeNorm]        = { col_fg,         col_bg,         "#282828" },
+    [SchemeSel]         = { col_highlight,  col_bg,         col_fg },
     [SchemeStatus]      = { col_fg,         col_bg,         col_bg },
-    [SchemeTagsSel]     = { col_highlight,  col_bg,         col_bg },
+    [SchemeTagsSel]     = { col_fg_dark,    col_highlight,  col_bg },
     [SchemeTagsNorm]    = { col_fg,         col_bg,         col_bg },
     [SchemeTagsInd]     = { col_highlight,  col_bg,         col_bg },
-    [SchemeInfoSel]     = { col_fg_dark,    col_highlight,  col_bg },
+    [SchemeInfoSel]     = { col_fg,         col_highlight,  col_bg },
     [SchemeInfoNorm]    = { col_bg,         col_bg,         col_bg },
-    [SchemeLayoutInfo]  = { col_highlight,  col_bg,         col_bg },
+    [SchemeLayoutInfo]  = { col_fg_dark,    col_bg,         col_bg },
     [SchemeUrgent]      = { col_highlight,  col_bg,         col_bg },
 };
 
@@ -45,7 +44,7 @@ static const char *colors[][3] = {
 static const char sel_chars[2] = {']', '['};
 
 /* tagging */
-static const char *tags[] = { "www", "term", "dev", "dbg", "chat", "sys", "media", "gfx", "games", "crap" };
+static const char *tags[] = { "www", "term", "dev", "debug", "chat", "sys", "media", "gfx", "games", "tmp" };
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -152,10 +151,6 @@ static Key keys[] = {
     { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-    { MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
-    { MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = GAP_RESET } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = GAP_TOGGLE} },
     TAGKEYS(                        XK_1,                      0)
     TAGKEYS(                        XK_2,                      1)
     TAGKEYS(                        XK_3,                      2)
