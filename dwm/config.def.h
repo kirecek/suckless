@@ -2,13 +2,13 @@
 
 /* appearance */
 static const unsigned int borderpx = 1;
-static const unsigned int gappx    = 10;
+static const unsigned int gappx    = 4;
 static const unsigned int snap     = 32;
 
 /* bar settings */
 static const int showbar  = 1;
 static const int topbar   = 1;
-static const int showtitle = 1;
+static const int showtitle = 0;
 
 /* statusbar padding */
 static const int horizpadbar = 0;
@@ -19,7 +19,7 @@ static const char *fonts[]    = { "Ubuntu Mono:size=12" };
 static const char dmenufont[] = "Ubuntu Mono:size=12";
 
 /* color variables */
-static const char col_bg[]        = "#000000";
+static const char col_bg[]        = "#1f1f1f";
 static const char col_fg[]        = "#969696";
 static const char col_fg_dark[]   = "#FFFFFF";
 static const char col_highlight[] = "#1E1E1E";
@@ -32,11 +32,11 @@ static const char *colors[][3] = {
     [SchemeStatus]      = { col_fg,         col_bg,         col_bg },
     [SchemeTagsSel]     = { col_fg_dark,    col_highlight,  col_bg },
     [SchemeTagsNorm]    = { col_fg,         col_bg,         col_bg },
-    [SchemeTagsInd]     = { col_highlight,  col_bg,         col_bg },
-    [SchemeInfoSel]     = { col_fg,         col_highlight,  col_bg },
+    [SchemeTagsInd]     = { "#111111",  col_bg,         col_bg },
+    [SchemeInfoSel]     = { col_fg,         col_bg,         col_bg },
     [SchemeInfoNorm]    = { col_bg,         col_bg,         col_bg },
     [SchemeLayoutInfo]  = { col_fg_dark,    col_bg,         col_bg },
-    [SchemeUrgent]      = { col_highlight,  col_bg,         col_bg },
+    [SchemeUrgent]      = { col_fg_dark,  col_bg,         col_bg },
 };
 
 // changing these chars require also modification of dwm.c!!!
@@ -44,7 +44,8 @@ static const char *colors[][3] = {
 static const char sel_chars[2] = {']', '['};
 
 /* tagging */
-static const char *tags[] = { "www", "term", "dev", "debug", "chat", "sys", "media", "gfx", "games", "tmp" };
+// static const char *tags[] = { "www", "term", "dev", "debug", "chat", "sys", "media", "gfx", "games", "tmp" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
     /* xprop(1):
