@@ -99,7 +99,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2]             = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *roficmd[]        = { "rofi", "-show", "drun", "-show-icons", NULL };
+static const char *roficmd[]        = { "rofi", "-show", "drun", "-no-default-config", "-show-icons", NULL };
 static const char *termcmd[]        = { "alacritty", NULL };
 static const char *clipmenucmd[]    = { "clipmenu", NULL };
 
