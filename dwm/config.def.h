@@ -104,9 +104,9 @@ static const char *termcmd[]        = { "alacritty", NULL };
 static const char *clipmenucmd[]    = { "clipmenu", NULL };
 
 /* multimedia commands */
-static const char *upvol[]       = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
-static const char *downvol[]     = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
-static const char *mutevol[]     = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+static const char *upvol[]       = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",     NULL };
+static const char *downvol[]     = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%",     NULL };
+static const char *mutevol[]     = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle",  NULL };
 static const char *brightup[]    = { "/usr/bin/xbacklight", "-inc", "10", NULL};
 static const char *brightdown[]  = { "/usr/bin/xbacklight", "-dec", "10", NULL};
 
